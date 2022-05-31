@@ -3,20 +3,20 @@ Description
 This app 
 
 
-Usage
+# Usage
 Clone the app
 
 npm install
 npm start
 You can then access the app on port 3000 at one of the urls given above.
 
-Tests
+# Tests
 There is a basic test framework available that uses the Mocha/Chai framework
 
 npm test
 The test for posts will fail ( as expected ) if the database has not been correctly setup.
 
-How to use this environment
+# How to use this environment
 Download vagrant from vagrantup.com
 Download virtualbox from virualbox.org
 Make a new directory and move app to this directory
@@ -28,7 +28,7 @@ config.vm.synced_folder - How you access files from your local machine/computer 
 config.vm.provision - what we want to setup (automating the setup process)
 eg:
 
-Vagrant.configure("2") do |config|
+  `Vagrant.configure("2") do |config|
 
   config.vm.box = "ubuntu/xenial64"
   
@@ -38,7 +38,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.synced_folder ".", "/home/vagrant
 
-end
+end`
 
 Use the xenial64 machine by inputting: config.vm.box = "ubuntu/xenial64" into the vagrant folder
 sync your folders by inputting: config.vm.synced_folder "app", "/app" into the vagrant folder
@@ -46,7 +46,8 @@ Spin up the VM (create the VM) by running vagrant up in the terminal
 SSH into the box (make a connection to the VM) by running vagrant ssh
 create a provision.sh file in the environment folder so that you can provision the machine
 input this into the provision.sh file:
-#!/bin/bash
+
+`#!/bin/bash
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get install nginx -y
@@ -57,4 +58,4 @@ sudo apt-get install python-software-properties
 cd /vagrant/app/app/app
 sudo npm install pm2 -g
 npm install
-npm start -d
+npm start -d`
