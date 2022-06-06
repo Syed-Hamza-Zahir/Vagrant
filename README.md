@@ -69,29 +69,3 @@ npm install
 
 npm start -d`
 
-## Nginx Reverse Proxy
-
-# Nginx
-Nginx is a web server which can also be used as a reverse proxy
-The Nginx webserver acts as an intermediary for requests from clients so that the app cannot be directly accessed by users
-
-When successfully set up users should be able to access the app and will not need to include the port number
-
-
-# Making the reverse proxy
-- Edit the /etc/nginx/sites-enabled/default file in the app VM so that it includes:
-````
-location / {
-         proxy_pass http://localhost:3000;
-        # First attempt to serve request as file, then
-        # as directory, then fall back to displaying a 404.
-        try_files $uri $uri/ =404;
-}
-
-location ~ ^/(images|javascript|js|css|flash|media|static)/  {
-root    /home/ubuntu/app/public;
-expires 30d;
-}
-````
-- The first part provides the reverse proxy for the webpage
-- The next part provides the reverse proxy for the image (the sparta global logo)
